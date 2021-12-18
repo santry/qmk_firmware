@@ -16,7 +16,7 @@
 
 #pragma once
 
-#define ENCODER_RESOLUTION 4    // dependent on rotary encoder
+#define ENCODER_RESOLUTION 2    // dependent on rotary encoder
 
 #define TAP_CODE_DELAY 10       // delay between key press and release on `tapcode(kc)`
 

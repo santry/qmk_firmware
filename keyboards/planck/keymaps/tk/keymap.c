@@ -17,7 +17,6 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-
 /*
     ██████╗ ███████╗███████╗██╗███╗   ██╗██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
     ██╔══██╗██╔════╝██╔════╝██║████╗  ██║██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
@@ -160,10 +159,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 
     [_BASE] = LAYOUT_planck_grid(
-        ROTARY,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,     KC_Y,     KC_U,   KC_I,    KC_O,    KC_P,    PANIC,
+        SH_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,     KC_Y,     KC_U,   KC_I,    KC_O,    KC_P,    PANIC,
         CTL_TAB, KC_A,    KC_S,    KC_D,    KC_F,   KC_G,     KC_H,     KC_J,   KC_K,    KC_L,    KC_SCLN, KC_ENT,
-        SH_ESC,  KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,     KC_N,     KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SH_QUOT,
-        HYPER,   KC_CAPS, KC_LALT, KC_LGUI, LOWER1, KC_SPACE, KC_SPACE, RAISE1, DM_PLY1, DM_PLY2, DM_REC1, DM_REC2
+        KC_LSHIFT,  KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,     KC_N,     KC_M,   KC_COMM, KC_DOT,  KC_SLSH, SH_QUOT,
+        ROTARY,   HYPER, KC_LALT, KC_LGUI, LOWER1, KC_SPACE, KC_SPACE, RAISE1, DM_PLY1, DM_PLY2, DM_REC1, DM_REC2
     ),
 
     /* Hyper - keyboard adjustments and function keys
@@ -310,34 +309,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Keyboard initialization
 
-void keyboard_post_init_user(void) {
-    clicky_off();
-}
+//void keyboard_post_init_user(void) {
+ //   clicky_off();
+//}
 
 // Dynamic macros
 
-static bool prerecord_clicky = false;
+//static bool prerecord_clicky = false;
 
-void dynamic_macro_record_start_user(void) {
-    prerecord_clicky = is_clicky_on();
-    if (!prerecord_clicky) {
-        clicky_on();
-    }
+//void dynamic_macro_record_start_user(void) {
+ //   prerecord_clicky = is_clicky_on();
+  //  if (!prerecord_clicky) {
+   //     clicky_on();
+    //}
+//
+ //   #ifdef AUDIO_ENABLE
+  //  PLAY_SONG(dmacro_recs_song);
+   // #endif
+//}
 
-    #ifdef AUDIO_ENABLE
-    PLAY_SONG(dmacro_recs_song);
-    #endif
-}
-
-void dynamic_macro_record_end_user(int8_t direction) {
-    if (!prerecord_clicky) {
-        clicky_off();
-    }
-
-    #ifdef AUDIO_ENABLE
-    PLAY_SONG(dmacro_rece_song);
-    #endif
-}
+//void dynamic_macro_record_end_user(int8_t direction) {
+ //   if (!prerecord_clicky) {
+  //      clicky_off();
+   // }
+//
+ //   #ifdef AUDIO_ENABLE
+  //  PLAY_SONG(dmacro_rece_song);
+   // #endif
+//}
 
 void dynamic_macro_play_user(int8_t direction) {
     #ifdef AUDIO_ENABLE
